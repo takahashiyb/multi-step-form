@@ -9,6 +9,7 @@
 button {
   color: v.$white;
   background-color: v.$blue-950;
+  @include f.responsive-type(v.$font-4-m, v.$font-3-m, v.$font-3-m);
 
   padding-top: v.$spacing-0100;
   padding-bottom: v.$spacing-0100;
