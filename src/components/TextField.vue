@@ -33,7 +33,7 @@ const isError = ref<boolean>(false)
 }
 
 label {
-  @include f.flat-type(v.$font-5);
+  @include f.responsive-type(v.$font-5, v.$font-4-r, v.$font-4-r);
   color: v.$blue-950;
 
   grid-column: 1;
@@ -41,7 +41,7 @@ label {
 }
 
 input {
-  @include f.flat-type(v.$font-4-m);
+  @include f.responsive-type(v.$font-4-m, v.$font-3-m, v.$font-3-m);
   color: v.$blue-950;
 
   padding-top: v.$spacing-0100;
@@ -79,10 +79,6 @@ input:not(:placeholder-shown) {
 }
 
 @media (min-width: f.em(700)) {
-  label {
-    @include f.flat-type(v.$font-4-r);
-  }
-
   input {
     @include f.flat-type(v.$font-3-m);
   }
