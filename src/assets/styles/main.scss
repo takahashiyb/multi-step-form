@@ -211,3 +211,16 @@ h6 {
   white-space: nowrap;
   border: 0;
 }
+
+html {
+  background-color: $blue-100;
+  min-height: 100%;
+}
+
+@media (min-width: f.em(700)) {
+  html {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
