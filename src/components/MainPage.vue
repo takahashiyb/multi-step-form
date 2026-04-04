@@ -22,9 +22,9 @@ const data = useDataStore()
         <slot name="info"></slot>
       </section>
       <nav>
-        <AdditionalButton class="back" @click="data.step--" />
-        <PrimaryButton class="next" @click="data.step++" />
-        <!-- <SecondaryButton class="next" /> -->
+        <AdditionalButton class="back" @click="data.backStep" />
+        <PrimaryButton class="next" @click="data.nextStep" v-if="data.step !== 4" />
+        <SecondaryButton class="next" @click="data.completionStep" v-if="data.step === 4" />
       </nav>
     </div>
   </main>
@@ -96,6 +96,14 @@ nav {
   display: grid;
   grid-template-columns: max-content max-content;
   justify-content: space-between;
+}
+
+.back {
+  grid-column: 1;
+}
+
+.next {
+  grid-column: 2;
 }
 
 @media (min-width: f.em(700)) {
