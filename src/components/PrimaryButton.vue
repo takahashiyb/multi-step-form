@@ -1,6 +1,6 @@
 <script setup lang="ts"></script>
 <template>
-  <button>Next Step</button>
+  <button type="button">Next Step</button>
 </template>
 <style scoped lang="scss">
 @use '@/assets/styles/main.scss' as v;

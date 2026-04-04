@@ -1,6 +1,6 @@
 <script setup lang="ts"></script>
 <template>
-  <button>Confirm</button>
+  <button type="button">Confirm</button>
 </template>
 <style scoped lang="scss">
 @use '@/assets/styles/main.scss' as v;
