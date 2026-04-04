@@ -20,6 +20,6 @@ button {
 }
 
 button:hover {
-  background-color: v.$blue-700;
+  background-color: v.$purple-600;
 }
 </style>

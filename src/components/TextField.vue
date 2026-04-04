@@ -50,7 +50,7 @@ input {
 
   border: 1px solid v.$purple-200;
   border-radius: 4px;
-  outline-color: v.$blue-700;
+  outline-color: v.$purple-600;
 
   grid-column: 1/-1;
   grid-row: 2;
@@ -61,7 +61,7 @@ input::placeholder {
 }
 
 input:not(:placeholder-shown) {
-  border-color: v.$blue-700;
+  border-color: v.$purple-600;
 }
 
 .container__input.error input {
