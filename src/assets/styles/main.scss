@@ -116,11 +116,21 @@ html {
 h2 {
   @include f.responsive-type(v.$font-2, v.$font-1, v.$font-1);
   color: v.$blue-950;
+
+  padding-bottom: v.$spacing-0100;
 }
 
 .subtext {
   @include f.flat-type(v.$font-3-r);
   color: v.$grey-500;
+
+  padding-bottom: v.$spacing-0500;
+}
+
+.error-message {
+  @include f.flat-type(v.$font-4-b);
+  color: v.$red-500;
+  white-space: nowrap;
 }
 
 @media (min-width: f.em(700)) {
