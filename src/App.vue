@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import MainPage from './components/MainPage.vue'
 import StepNumber from './components/StepNumber.vue'
-import PlanCard from './components/PlanCard.vue'
+import StepPersonalInfo from './components/StepPersonalInfo.vue'
+import StepPlanInfo from './components/StepPlanInfo.vue'
 import { useDataStore } from './stores/data'
 
 const data = useDataStore()
 
-function alert() {
-  window.alert('hello')
-}
+// function alert() {
+//   window.alert('hello')
+// }
 </script>
 
 <template>
@@ -16,7 +17,7 @@ function alert() {
 
   <MainPage>
     <template v-slot:steps>
-      <li v-for="step in data.steps">
+      <li v-for="step in data.steps" :key="step.id">
         <StepNumber :id="step.id">
           <template v-slot:number>{{ step.id }}</template>
           <template v-slot:step>{{ step.id }}</template>
@@ -24,7 +25,10 @@ function alert() {
         </StepNumber>
       </li>
     </template>
-    <template v-slot:info> </template>
+    <template v-slot:info>
+      <StepPersonalInfo v-if="data.step === 1" />
+      <StepPlanInfo v-if="data.step === 2" />
+    </template>
   </MainPage>
   <!--  -->
 </template>
