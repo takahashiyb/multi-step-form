@@ -3,9 +3,6 @@
   <button type="button">Next Step</button>
 </template>
 <style scoped lang="scss">
-@use '@/assets/styles/main.scss' as v;
-@use '@/assets/styles/functions.scss' as f;
-
 button {
   color: v.$white;
   background-color: v.$blue-950;

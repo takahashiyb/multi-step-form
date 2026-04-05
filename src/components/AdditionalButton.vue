@@ -3,9 +3,6 @@
   <button type="button">Go Back</button>
 </template>
 <style scoped lang="scss">
-@use '@/assets/styles/main.scss' as v;
-@use '@/assets/styles/functions.scss' as f;
-
 button {
   color: v.$blue-950;
   background-color: transparent;

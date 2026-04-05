@@ -3,9 +3,6 @@
   <button type="button">Confirm</button>
 </template>
 <style scoped lang="scss">
-@use '@/assets/styles/main.scss' as v;
-@use '@/assets/styles/functions.scss' as f;
-
 button {
   color: v.$white;
   background-color: v.$purple-600;

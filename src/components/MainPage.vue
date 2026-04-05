@@ -3,6 +3,7 @@ import { useDataStore } from '@/stores/data'
 import AdditionalButton from './AdditionalButton.vue'
 import PrimaryButton from './PrimaryButton.vue'
 import SecondaryButton from './SecondaryButton.vue'
+import StepPersonalInfo from './StepPersonalInfo.vue'
 
 const data = useDataStore()
 </script>
@@ -17,9 +18,9 @@ const data = useDataStore()
     </ul>
     <div class="container__info">
       <section>
-        <h2><slot name="title"></slot></h2>
-        <p><slot name="subtext"></slot></p>
-        <slot name="info"></slot>
+        <slot name="info">
+          <StepPersonalInfo />
+        </slot>
       </section>
       <nav>
         <AdditionalButton class="back" @click="data.backStep" />
@@ -30,9 +31,6 @@ const data = useDataStore()
   </main>
 </template>
 <style scoped lang="scss">
-@use '@/assets/styles/main.scss' as v;
-@use '@/assets/styles/functions.scss' as f;
-
 main {
   height: 100dvh;
 
@@ -77,7 +75,9 @@ img {
 }
 
 section {
-  flex: 1;
+  padding-top: v.$spacing-0400;
+  padding-bottom: v.$spacing-0400;
+  padding-inline: v.$spacing-0300;
 
   background-color: v.$white;
 
@@ -86,6 +86,8 @@ section {
   margin-bottom: v.$spacing-0300;
 
   border-radius: 10px;
+
+  flex: 1;
 }
 
 nav {
@@ -151,6 +153,9 @@ nav {
 
   section {
     background-color: transparent;
+
+    padding: 0;
+
     margin: 0;
   }
 

@@ -13,4 +13,14 @@ export default defineConfig({
     },
   },
   base: '/multi-step-form/',
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `
+          @use "@/assets/styles/variables.scss" as v;
+          @use "@/assets/styles/functions.scss" as f;
+          `,
+      },
+    },
+  },
 })

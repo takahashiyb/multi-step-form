@@ -1,0 +1,104 @@
+@use '@/assets/styles/functions.scss' as f;
+
+// VARIABLES
+
+// / Colors:
+// // Neutrals:
+$white: #ffffff;
+$black: #000000;
+
+// /// Greys:
+$grey-500: #9699aa;
+
+// // Orange:
+$orange-300: #ffaf7e;
+
+// // Red:
+$red-500: #ee374a;
+$red-450: #e96170;
+$red-400: #f9818e;
+
+// // Purple:
+$purple-600: #483eff;
+$purple-500: #6259ff;
+$purple-400: #928cff;
+$purple-200: #d6d9e6;
+
+// // Blue:
+$blue-950: #022959;
+$blue-700: #164a8a;
+$blue-300: #abbcff;
+$blue-200: #bee2fd;
+$blue-100: #eff5ff;
+$blue-050: #f8f9ff;
+
+// TYPOGRAPHY
+
+// / Font 1: Ubuntu:
+$font-family: 'Ubuntu';
+
+$font-1: (
+  font-size: f.rem(32),
+  font-weight: 700,
+  line-height: 1.2,
+  letter-spacing: em(0),
+);
+
+$font-2: (
+  font-size: f.rem(24),
+  font-weight: 700,
+  line-height: 1.2,
+  letter-spacing: em(0),
+);
+
+$font-3-m: (
+  font-size: f.rem(16),
+  font-weight: 500,
+  line-height: 1.2,
+  letter-spacing: em(0),
+);
+
+$font-3-r: (
+  font-size: f.rem(16),
+  font-weight: 400,
+  line-height: 1.5,
+  letter-spacing: em(0),
+);
+
+$font-4-b: (
+  font-size: f.rem(14),
+  font-weight: 700,
+  line-height: 1.2,
+  letter-spacing: em(1),
+);
+
+$font-4-m: (
+  font-size: f.rem(14),
+  font-weight: 500,
+  line-height: 1.5,
+  letter-spacing: em(0),
+);
+
+$font-4-r: (
+  font-size: f.rem(14),
+  font-weight: 400,
+  line-height: 1.2,
+  letter-spacing: em(0),
+);
+
+$font-5: (
+  font-size: f.rem(12),
+  font-weight: 400,
+  line-height: 1.2,
+  letter-spacing: em(0),
+);
+
+// Spacing:
+
+$spacing-0000: f.em(0);
+$spacing-0100: f.em(8);
+$spacing-0200: f.em(16);
+$spacing-0300: f.em(24);
+$spacing-0400: f.em(32);
+$spacing-0500: f.em(40);
+$spacing-0700: f.em(56);

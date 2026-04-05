@@ -1,34 +1,65 @@
 <script setup lang="ts">
+import { useDataStore } from '@/stores/data'
 import { ref, useId } from 'vue'
+
+const data = useDataStore()
 
 const props = defineProps<{
   type: 'text' | 'email' | 'tel'
-  placeholder: string
+  placeholder: string | ''
 }>()
 
 const id = useId()
 
-const isError = ref<boolean>(false)
+const error = ref<string | null>(null)
+
+const value = ref('')
+
+function checkValidity(event: Event) {
+  const input = event.target as HTMLInputElement
+
+  if (input.validity.valueMissing) {
+    return (error.value = 'This field is required')
+  }
+
+  if (input.validity.typeMismatch) {
+    return (error.value = 'requires valid Email Address')
+  }
+
+  if (input.validity) {
+    error.value = input.validationMessage
+  }
+
+  data.updatePersonalInfo(props.type, input.value)
+}
+
+function resetField() {
+  error.value = null
+
+  data.updatePersonalInfo(props.type, '')
+}
 </script>
+
 <template>
-  <!-- 
-  <TextField type="" placeholder="">
-    <slot></slot>
-  </TextField>
-  -->
-  <div class="container__input" :class="{ error: isError }">
+  <div class="container__input" :class="{ error: error }">
     <label :for="id"><slot></slot></label>
-    <span class="error-message" v-if="isError">Error message</span>
-    <input :id="id" :type="props.type" required :placeholder="props.placeholder" />
+    <span class="error-message" v-if="error">{{ error }}</span>
+    <input
+      :id="id"
+      :type="props.type"
+      :placeholder="props.placeholder"
+      v-model="value"
+      required
+      @blur="checkValidity"
+      @focus="resetField"
+    />
   </div>
 </template>
-<style scoped lang="scss">
-@use '@/assets/styles/main.scss' as v;
-@use '@/assets/styles/functions.scss' as f;
 
+<style scoped lang="scss">
 .container__input {
   display: grid;
-  grid-template-columns: min-content min-content;
+  grid-template-columns: 1fr min-content;
   gap: v.$spacing-0100;
 }
 

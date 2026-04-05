@@ -32,9 +32,6 @@ const isSelected = ref<boolean>(false)
   </div>
 </template>
 <style scoped lang="scss">
-@use '@/assets/styles/main.scss' as v;
-@use '@/assets/styles/functions.scss' as f;
-
 .card {
   padding-inline: v.$spacing-0200;
   padding-top: v.$spacing-0300;

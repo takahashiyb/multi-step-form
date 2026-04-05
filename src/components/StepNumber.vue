@@ -33,9 +33,6 @@ const props = defineProps<{
   </div>
 </template>
 <style scoped lang="scss">
-@use '@/assets/styles/main.scss' as v;
-@use '@/assets/styles/functions.scss' as f;
-
 .container__number {
   height: 32px;
   width: 32px;
