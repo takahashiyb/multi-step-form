@@ -14,13 +14,14 @@ const data = useDataStore()
       v-for="info in Object.values(data.personalInfo)"
       :key="info.id"
     >
-      <label :for="info.label.toLowerCase()">{{ info.label }}</label>
+      <label :for="info.id">{{ info.label }}</label>
       <span class="error-message">{{ info.error }}</span>
       <input
         :id="info.id"
         :type="info.type"
         :placeholder="info.placeholder"
         required
+        autocomplete="on"
         v-model="info.value"
         @blur="data.checkValidity($event, info.id)"
         @focus="data.resetField(info.id)"
