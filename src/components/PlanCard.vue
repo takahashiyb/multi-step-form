@@ -1,17 +1,15 @@
 <script setup lang="ts">
 import { useDataStore } from '@/stores/data'
-import { ref } from 'vue'
 
 const data = useDataStore()
 
 const props = defineProps<{
   name: string // for the icon's alt
   image: string
+  selected: boolean
 }>()
 
 const imagePath = new URL(props.image, import.meta.url).href
-
-const isSelected = ref<boolean>(false)
 </script>
 
 <template>
@@ -23,7 +21,7 @@ const isSelected = ref<boolean>(false)
         <template v-slot:free>{{ plan.free }}</template>
       </PlanCard>
  -->
-  <div class="card" :class="{ selected: isSelected, yearly: data.isYearly }">
+  <div class="card" :class="{ selected: props.selected, yearly: data.isYearly }">
     <img v-bind:src="imagePath" :alt="`icon of ${props.name}`" />
     <p class="text__title"><slot name="title"></slot></p>
     <p class="text__price" v-if="data.isYearly"><slot name="year"></slot></p>
@@ -42,13 +40,9 @@ const isSelected = ref<boolean>(false)
 
   display: grid;
   grid-template-columns: max-content auto;
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 20px);
   align-items: center;
   column-gap: v.$spacing-0200;
-}
-
-.card.yearly {
-  grid-template-rows: repeat(3, 1fr);
 }
 
 .card.selected {
@@ -57,32 +51,36 @@ const isSelected = ref<boolean>(false)
   border-color: v.$purple-600;
 }
 
-img {
+.card img {
   grid-column: 1;
-  grid-row: 1/3;
-}
-
-.card.yearly img {
   grid-row: 1/4;
 }
 
-.text__title {
+.card .text__title {
   @include f.flat-type(v.$font-3-m);
   color: v.$blue-950;
 
   grid-column: 2;
+  grid-row: 1/3;
+}
+
+.card.yearly .text__title {
   grid-row: 1;
 }
 
-.text__price {
+.card .text__price {
   @include f.flat-type(v.$font-4-r);
   color: v.$grey-500;
 
   grid-column: 2;
-  grid-row: 2;
+  grid-row: 2/4;
 }
 
-.text__free {
+.card.yearly .text__price {
+  grid-row: 2/3;
+}
+
+.card .text__free {
   @include f.flat-type(v.$font-5);
   color: v.$blue-950;
 
@@ -100,27 +98,34 @@ img {
     grid-template-rows: repeat(2, 1fr);
   }
 
-  img {
+  .card img {
     grid-row: 1/3;
   }
 
-  .text__free {
+  .card .text__title {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .card .text__price {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .card .text__free {
     grid-column: 3;
     grid-row: 1/3;
   }
 }
 
 @media (min-width: f.em(1000)) {
-  .card {
-    grid-template-rows: repeat(3, auto);
-  }
-
+  .card,
   .card.yearly {
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(4, auto);
+    grid-template-rows: 1fr repeat(3, 20px);
   }
 
-  img {
+  .card img {
     grid-column: 1;
     grid-row: 1;
 
@@ -130,25 +135,23 @@ img {
   .card.yearly img {
     grid-column: 1;
     grid-row: 1;
+
+    margin-bottom: v.$spacing-0500;
   }
 
-  .text__title {
-    @include f.flat-type(v.$font-3-m);
-    color: v.$blue-950;
-
+  .card .text__title,
+  .card.yearly .text__title {
     grid-column: 1;
     grid-row: 2;
   }
 
-  .text__price {
-    @include f.flat-type(v.$font-4-r);
-    color: v.$grey-500;
-
+  .card .text__price,
+  .card.yearly .text__price {
     grid-column: 1;
     grid-row: 3;
   }
 
-  .text__free {
+  .card .text__free {
     grid-column: 1;
     grid-row: 4;
   }
