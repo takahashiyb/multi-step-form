@@ -100,10 +100,6 @@ input:not(:placeholder-shown) {
 }
 
 .error-message {
-  @include f.flat-type(v.$font-4-b);
-  color: v.$red-500;
-  white-space: nowrap;
-
   grid-column: 2;
   grid-row: 1;
   justify-self: end;

@@ -12,14 +12,6 @@ import TextField from './TextField.vue'
   </div>
 </template>
 <style scoped lang="scss">
-h2 {
-  padding-bottom: v.$spacing-0100;
-}
-
-.subtext {
-  padding-bottom: v.$spacing-0500;
-}
-
 div {
   display: flex;
   flex-direction: column;
