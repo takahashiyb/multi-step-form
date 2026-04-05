@@ -4,6 +4,7 @@ import StepAddonInfo from './components/StepAddonInfo.vue'
 import StepNumber from './components/StepNumber.vue'
 import StepPersonalInfo from './components/StepPersonalInfo.vue'
 import StepPlanInfo from './components/StepPlanInfo.vue'
+import StepSummary from './components/StepSummary.vue'
 import { useDataStore } from './stores/data'
 
 const data = useDataStore()
@@ -29,7 +30,8 @@ const data = useDataStore()
     <template v-slot:info>
       <StepPersonalInfo v-if="data.step === 1" />
       <StepPlanInfo v-else-if="data.step === 2" />
-      <StepAddonInfo v-else-if="data.step === 3"></StepAddonInfo>
+      <StepAddonInfo v-else-if="data.step === 3" />
+      <StepSummary v-else-if="data.step === 4" />
     </template>
   </MainPage>
   <!--  -->
