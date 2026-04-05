@@ -1,8 +1,13 @@
-import { describe, it } from 'node:test'
+import { describe, it, expect, beforeEach, afterEach } from 'vitest'
+import { mount } from '@vue/test-utils'
+import { createPinia, setActivePinia } from 'pinia'
+import { useDataStore } from '@/stores/data'
 
 describe('test personal info step', () => {
+  beforeEach(() => {})
+
   it.todo('check missing name error message', () => {
-    //// submit with no name data
+    // submit with no name data
     // expect('error message appearing')
     // expect('no submit event')
     //// add name data

@@ -1,4 +1,4 @@
-import { describe, it } from 'node:test'
+import { describe, it } from 'vitest'
 
 describe('test Plan info step', () => {
   it.todo('check missing tier selection error message', () => {

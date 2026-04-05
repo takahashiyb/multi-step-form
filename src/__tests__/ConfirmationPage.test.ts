@@ -1,4 +1,4 @@
-import { describe, it } from 'node:test'
+import { describe, it } from 'vitest'
 
 describe('test confirmation and completion step', () => {
   it.todo('check click change button', () => {
