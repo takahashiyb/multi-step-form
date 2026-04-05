@@ -6,34 +6,32 @@ import PlanSwitch from './PlanSwitch.vue'
 const data = useDataStore()
 </script>
 <template>
-  <div>
-    <h2>Select your plan</h2>
-    <p class="subtext">You have the option of monthly or yearly billing.</p>
-    <div class="container__error">
-      <p class="error-message" v-if="data.tierError">Selecting a Tier is required</p>
-    </div>
-    <ul radiogroup="plan">
-      <li v-for="plan in data.plans" :key="plan.id">
-        <label>
-          <input
-            class="radio"
-            type="radio"
-            name="plan"
-            :value="plan.id"
-            v-model="data.tier"
-            @click="data.tierSelected"
-          />
-          <PlanCard :name="plan.name" :image="plan.icon" :selected="plan.id === data.tier">
-            <template v-slot:title>{{ plan.nameCaps }} </template>
-            <template v-slot:year>{{ plan.yearlyFormatted }}</template>
-            <template v-slot:month>{{ plan.monthlyFormatted }}</template>
-            <template v-slot:free>{{ plan.free }}</template>
-          </PlanCard>
-        </label>
-      </li>
-    </ul>
-    <PlanSwitch />
+  <h2>Select your plan</h2>
+  <p class="subtext">You have the option of monthly or yearly billing.</p>
+  <div class="container__error">
+    <p class="error-message" v-if="data.tierError">Selecting a Tier is required</p>
   </div>
+  <ul radiogroup="plan">
+    <li v-for="plan in data.plans" :key="plan.id">
+      <label>
+        <input
+          class="radio"
+          type="radio"
+          name="plan"
+          :value="plan.id"
+          v-model="data.tier"
+          @click="data.tierSelected"
+        />
+        <PlanCard :name="plan.name" :image="plan.icon" :selected="plan.id === data.tier">
+          <template v-slot:title>{{ plan.nameCaps }} </template>
+          <template v-slot:year>{{ plan.yearlyFormatted }}</template>
+          <template v-slot:month>{{ plan.monthlyFormatted }}</template>
+          <template v-slot:free>{{ plan.free }}</template>
+        </PlanCard>
+      </label>
+    </li>
+  </ul>
+  <PlanSwitch />
 </template>
 <style scoped lang="scss">
 ul {
