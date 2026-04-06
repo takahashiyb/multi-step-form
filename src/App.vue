@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import MainPage from './components/MainPage.vue'
 import StepAddonInfo from './components/StepAddonInfo.vue'
+import StepCompleted from './components/StepCompleted.vue'
 import StepNumber from './components/StepNumber.vue'
 import StepPersonalInfo from './components/StepPersonalInfo.vue'
 import StepPlanInfo from './components/StepPlanInfo.vue'
@@ -8,10 +9,6 @@ import StepSummary from './components/StepSummary.vue'
 import { useDataStore } from './stores/data'
 
 const data = useDataStore()
-
-// function alert() {
-//   window.alert('hello')
-// }
 </script>
 
 <template>
@@ -31,7 +28,8 @@ const data = useDataStore()
       <StepPersonalInfo v-if="data.step === 1" />
       <StepPlanInfo v-else-if="data.step === 2" />
       <StepAddonInfo v-else-if="data.step === 3" />
-      <StepSummary v-else-if="data.step === 4" />
+      <StepSummary v-else-if="data.step === 4 && !data.isFinished" />
+      <StepCompleted v-else-if="data.step === 4 && data.isFinished" />
     </template>
   </MainPage>
   <!--  -->

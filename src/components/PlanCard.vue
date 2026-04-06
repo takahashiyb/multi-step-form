@@ -22,7 +22,7 @@ const imagePath = new URL(props.image, import.meta.url).href
       </PlanCard>
  -->
   <div class="card" :class="{ selected: props.selected, yearly: data.isYearly }">
-    <img v-bind:src="imagePath" :alt="`icon of ${props.name}`" />
+    <img :src="imagePath" :alt="`icon of ${props.name}`" />
     <p class="text__title"><slot name="title"></slot></p>
     <p class="text__price" v-if="data.isYearly"><slot name="year"></slot></p>
     <p class="text__price" v-else><slot name="month"></slot></p>
@@ -31,6 +31,8 @@ const imagePath = new URL(props.image, import.meta.url).href
 </template>
 <style scoped lang="scss">
 .card {
+  cursor: pointer;
+
   padding-inline: v.$spacing-0200;
   padding-top: v.$spacing-0300;
   padding-bottom: v.$spacing-0300;
@@ -43,6 +45,10 @@ const imagePath = new URL(props.image, import.meta.url).href
   grid-template-rows: repeat(3, 20px);
   align-items: center;
   column-gap: v.$spacing-0200;
+}
+
+.card:hover {
+  border-color: v.$purple-600;
 }
 
 .card.selected {

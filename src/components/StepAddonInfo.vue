@@ -11,6 +11,7 @@ const data = useDataStore()
     <label
       v-for="addon in data.addons"
       :key="addon.name + addon.id"
+      class="card__checkbox"
       :class="{ checked: addon.value }"
     >
       <input type="checkbox" class="input" v-model="addon.value" />
@@ -44,6 +45,8 @@ const data = useDataStore()
 }
 
 label {
+  cursor: pointer;
+
   display: grid;
   grid-template-columns: min-content 1fr min-content;
   align-items: center;
@@ -53,6 +56,10 @@ label {
 
   border-radius: 8px;
   border: 1px v.$purple-200 solid;
+}
+
+label:hover {
+  border-color: v.$purple-600;
 }
 
 .checkbox {

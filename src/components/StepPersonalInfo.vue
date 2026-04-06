@@ -53,6 +53,7 @@ label {
 input {
   @include f.responsive-type(v.$font-4-m, v.$font-3-m, v.$font-3-m);
   color: v.$blue-950;
+  cursor: pointer;
 
   padding-top: v.$spacing-0100;
   padding-bottom: v.$spacing-0100;

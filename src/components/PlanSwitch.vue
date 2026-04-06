@@ -16,6 +16,7 @@ const data = useDataStore()
 <style scoped lang="scss">
 label {
   background-color: v.$blue-050;
+  cursor: pointer;
 
   padding: v.$spacing-0200;
 

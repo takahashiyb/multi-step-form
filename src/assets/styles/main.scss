@@ -113,6 +113,10 @@ html {
   min-height: 100%;
 }
 
+button {
+  cursor: pointer;
+}
+
 h2 {
   @include f.responsive-type(v.$font-2, v.$font-1, v.$font-1);
   color: v.$blue-950;

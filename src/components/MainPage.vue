@@ -15,11 +15,11 @@ const data = useDataStore()
     <ul class="container__steps">
       <slot name="steps"></slot>
     </ul>
-    <div class="container__info">
+    <div class="container__info" :class="{ completed: data.isFinished }">
       <section>
         <slot name="info"> </slot>
       </section>
-      <nav>
+      <nav :hidden="data.isFinished" :inert="data.isFinished">
         <AdditionalButton class="back" @click="data.backStep" />
         <PrimaryButton class="next" @click="data.nextStep" v-if="data.step !== 4" />
         <SecondaryButton class="next" @click="data.completionStep" v-if="data.step === 4" />
@@ -87,6 +87,10 @@ section {
   flex: 1;
 }
 
+.completed section {
+  display: grid;
+}
+
 nav {
   background-color: v.$white;
 
@@ -95,6 +99,10 @@ nav {
   display: grid;
   grid-template-columns: max-content max-content;
   justify-content: space-between;
+}
+
+nav[hidden] {
+  opacity: 0;
 }
 
 .back {
