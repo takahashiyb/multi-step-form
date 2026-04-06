@@ -2,15 +2,6 @@
 import { useDataStore } from '@/stores/data'
 
 const data = useDataStore()
-
-data.tier = 0
-data.addons[0]!.value = true
-data.addons[2]!.value = true
-data.isYearly = true
-
-function clickChangeButton() {
-  data.step = 2
-}
 </script>
 <template>
   <h2>Finishing up</h2>
@@ -22,7 +13,7 @@ function clickChangeButton() {
       </p>
       <p class="tier__price" v-if="data.isYearly">{{ data.plans[data.tier!]?.yearlyFormatted }}</p>
       <p class="tier__price" v-else>{{ data.plans[data.tier!]?.monthlyFormatted }}</p>
-      <button class="tier__button" @click="clickChangeButton">Change</button>
+      <button class="tier__button" @click="data.clickChangeButton">Change</button>
     </div>
     <hr />
     <div
@@ -38,33 +29,13 @@ function clickChangeButton() {
   <section class="section__total" v-if="data.isYearly">
     <p class="name">Total (per year)</p>
     <p class="total__price">
-      {{
-        `+$${
-          data.plans[data.tier!]?.yearlyCost! +
-          data.addons
-            .filter((i) => i.value)
-            .map((a) => a.yearlyCost)
-            .reduce((a, b) => {
-              return a + b
-            })
-        }/yr`
-      }}
+      {{ data.showTotal() }}
     </p>
   </section>
   <section class="section__total" v-else>
     <p class="name">Total (per month)</p>
     <p class="total__price">
-      {{
-        `+$${
-          data.plans[data.tier!]?.monthlyCost! +
-          data.addons
-            .filter((i) => i.value)
-            .map((a) => a.monthlyCost)
-            .reduce((a, b) => {
-              return a + b
-            })
-        }/mo`
-      }}
+      {{ data.showTotal() }}
     </p>
   </section>
 </template>
@@ -117,6 +88,7 @@ function clickChangeButton() {
   background-color: transparent;
   color: v.$grey-500;
   text-align: start;
+  cursor: pointer;
 
   padding: 0;
 
